@@ -6,10 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://btacdvc1lhqaa" path="res://sprites/PLAYER/idle/3.png" id="4_6nm46"]
 [ext_resource type="Texture2D" uid="uid://cj5dgy1folt04" path="res://sprites/PLAYER/idle/4.png" id="5_i623q"]
 [ext_resource type="Texture2D" uid="uid://bwnproijcxu3y" path="res://sprites/PLAYER/walk/1 Walk.png" id="6_ef06p"]
+[ext_resource type="Texture2D" uid="uid://c3ymldny31shp" path="res://sprites/PLAYER/jump/1 Jump.png" id="6_q0i8f"]
+[ext_resource type="Texture2D" uid="uid://ct5gbpci7yfmr" path="res://sprites/PLAYER/jump/2 Jump.png" id="7_0i614"]
 [ext_resource type="Texture2D" uid="uid://cc3fw4brpcirh" path="res://sprites/PLAYER/walk/2 Walk.png" id="7_tjdhl"]
 [ext_resource type="Texture2D" uid="uid://d2fu23x3psxs2" path="res://sprites/PLAYER/jump/3 Jump.png" id="8_oprnr"]
 [ext_resource type="Texture2D" uid="uid://dskphcdexgq5v" path="res://sprites/PLAYER/walk/3 Walk.png" id="8_x08pd"]
 [ext_resource type="Texture2D" uid="uid://b55r4co0w12si" path="res://sprites/PLAYER/walk/4 Walk.png" id="9_dchgp"]
+[ext_resource type="Texture2D" uid="uid://bunhyqlxqex5e" path="res://sprites/PLAYER/jump/4 Jump.png" id="9_oprnr"]
+[ext_resource type="Texture2D" uid="uid://brb1f73t5pkkk" path="res://sprites/PLAYER/jump/5 Jump.png" id="10_8rie4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjdhl"]
 radius = 7.0
@@ -43,6 +47,17 @@ region = Rect2(0, 0, 20, 20)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_oprnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8rie4")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ef06p")
 }, {
 "duration": 1.0,
@@ -59,6 +74,12 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_q0i8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0i614")
+}, {
 "duration": 1.0,
 "texture": ExtResource("8_oprnr")
 }],
@@ -84,11 +105,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="player" type="CharacterBody2D" unique_id=1278355747]
+[node name="player" type="CharacterBody2D" unique_id=1278355747 groups=["Player"]]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_merdl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990180136]
-position = Vector2(0, -1)
+visible = false
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_tjdhl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=797955428]
@@ -96,11 +120,4 @@ z_index = 1
 position = Vector2(-2.3841858e-07, -9.536743e-07)
 scale = Vector2(1.1372559, 1.1090575)
 sprite_frames = SubResource("SpriteFrames_kdgjc")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2083033801]
-limit_left = 0
-limit_top = 0
-limit_bottom = 200
-position_smoothing_enabled = true
+animation = &"fall"
