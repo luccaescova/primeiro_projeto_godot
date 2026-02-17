@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://b55r4co0w12si" path="res://sprites/PLAYER/walk/4 Walk.png" id="9_dchgp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjdhl"]
-radius = 3.0
-height = 14.0
+radius = 7.0
+height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ef06p"]
 atlas = ExtResource("2_qly61")
@@ -88,12 +88,13 @@ animations = [{
 script = ExtResource("1_merdl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990180136]
-visible = false
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_tjdhl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=797955428]
-scale = Vector2(0.59804684, 0.5724609)
+z_index = 1
+position = Vector2(-2.3841858e-07, -9.536743e-07)
+scale = Vector2(1.1372559, 1.1090575)
 sprite_frames = SubResource("SpriteFrames_kdgjc")
 animation = &"idle"
 autoplay = "idle"
@@ -101,6 +102,5 @@ autoplay = "idle"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2083033801]
 limit_left = 0
 limit_top = 0
-limit_right = 847
 limit_bottom = 200
 position_smoothing_enabled = true
